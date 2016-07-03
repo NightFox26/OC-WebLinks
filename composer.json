@@ -1,6 +1,6 @@
 {
     "description":"Package pour l'application WebLinks du Tp OpenClassrooms",
-    "name":"WebLinks/vendor",
+    "name":"web_links/vendor",
     
     "license": "Apache-2.0",
     "require": {
