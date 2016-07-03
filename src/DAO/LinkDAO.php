@@ -33,8 +33,8 @@ class LinkDAO extends DAO
     protected function buildDomainObject($row) {
         $link = new Link();
         $link->setId($row['link_id']);
-        $link->setUrl($row['link_title']);
-        $link->setTitle($row['link_url']);
+        $link->setUrl($row['link_url']);
+        $link->setTitle($row['link_title']);
         
         return $link;
     }

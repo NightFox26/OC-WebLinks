@@ -6,7 +6,8 @@
     "require": {
         "silex/silex": "~1.2",
         "doctrine/dbal": "~2.4",
-        "twig/twig": "~1.16"
+        "twig/twig": "~1.16",        
+        "symfony/security": "2.7.*"
     },
     "autoload": {
         "psr-4": {"WebLinks\\": "src"}
