@@ -1,5 +1,5 @@
 {
-    "license": "NightFox26",
+    "license": "Apache-2.0",
     "require": {
         "silex/silex": "~1.2",
         "doctrine/dbal": "~2.4",
