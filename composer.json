@@ -1,4 +1,7 @@
 {
+    "description":"Package pour l'application WebLinks du Tp OpenClassrooms",
+    "name":"WebLinks/vendor",
+    
     "license": "Apache-2.0",
     "require": {
         "silex/silex": "~1.2",
