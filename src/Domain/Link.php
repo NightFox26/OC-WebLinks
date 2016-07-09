@@ -24,20 +24,31 @@ class Link
      * @var string
      */
     private $url;
+    
+    /**
+     *
+     *
+     *
+    */
+    private $user;
 
-    public function getId() {
+    public function getId() 
+    {
         return $this->id;
     }
 
-    public function setId($id) {
+    public function setId($id)
+    {
         $this->id = $id;
     }
 
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
@@ -45,7 +56,18 @@ class Link
         return $this->url;
     }
 
-    public function setUrl($url) {
+    public function setUrl($url)
+    {
         $this->url = $url;
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
+    }
+    
+    public function setUser(User $user)
+    {
+        $this->user = $user;
     }
 }

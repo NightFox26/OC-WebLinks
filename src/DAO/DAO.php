@@ -1,5 +1,4 @@
 <?php
-
 namespace WebLinks\DAO;
 
 use Doctrine\DBAL\Connection;
