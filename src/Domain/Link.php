@@ -26,10 +26,10 @@ class Link
     private $url;
     
     /**
+     * Associated user.
      *
-     *
-     *
-    */
+     * @var \WebLinks\Domain\User
+     */
     private $user;
 
     public function getId() 

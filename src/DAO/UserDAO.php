@@ -10,20 +10,32 @@ use WebLinks\Domain\User;
 
 class UserDAO extends DAO implements UserProviderInterface
 {
-    public function find($userId)
+     /**
+     * Returns an user matching the supplied id.
+     *
+     * @param integer $id
+     *
+     * @return \WebLinks\Domain\User|throws an exception if no matching user is found
+     */
+    public function find($id)
     {
         $sql = "SELECT *
                 FROM t_user
                 WHERE user_id = ?";        
-        $row = $this->getDb()->fetchAssoc($sql,array($userId));
+        $row = $this->getDb()->fetchAssoc($sql,array($id));
         
         if($row){
             return $this->buildDomainObject($row);
         }else{
-            throw new \Exception("No user matched on id : ".$userId);
+            throw new \Exception("No user matched on id : ".$id);
         }
     }
     
+    /**
+     * Return a list of all users, sorted by role (admin first).
+     *
+     * @return array A list of all users.
+     */
     public function findAll()
     {
         $sql = "SELECT *
@@ -39,11 +51,20 @@ class UserDAO extends DAO implements UserProviderInterface
         return $dataUsers;
     }
     
+    /**
+     * Delete user by using an id
+     *     
+     */
     public function deleteUser($id)
     {
        $this->getDb()->delete('t_user',array('user_id'=>$id)); 
     }
     
+    /**
+     * Save user in Db
+     *  
+     * @param \WebLinks\Domain\User
+     */
     public function save(User $user)
     {
         $dataUser = [
@@ -62,6 +83,12 @@ class UserDAO extends DAO implements UserProviderInterface
         }
     }
     
+    /**
+     * Creates an User object based on a DB row.
+     *
+     * @param array $row The DB row containing User data.
+     * @return \WebLinks\Domain\User
+     */
     protected function buildDomainObject($row)
     {
         $user = new User();

@@ -1,0 +1,14 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Error!{% endblock %}
+
+{% block content %}
+<div class="row" id="errorPanel">
+    <div class="col-xs-5">
+        <img class="img-responsive pull-right" src="https://t4.rbxcdn.com/9c5717873a24d0df52b08fb2ad7f9e21" alt="Error fox"/>
+    </div>
+    <div class="col-xs-6">
+        <h1>Whoops...<br><small>{{ message }}</small></h1>
+    </div>
+</div>
+{% endblock %}

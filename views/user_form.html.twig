@@ -11,6 +11,12 @@
         </div>
     {% endfor %}
     
+    {% if form_errors(userForm.password.first) %}
+        <div class="alert alert-danger">
+            {{ form_errors(userForm.password.first) }}
+        </div>
+    {% endif %}
+    
     <div class="well">          
         {{ form_start(userForm, { 'attr': {'class': 'form-horizontal'} }) }}
            

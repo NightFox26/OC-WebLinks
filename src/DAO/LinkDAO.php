@@ -7,7 +7,11 @@ use WebLinks\DAO\UserDAO;
 
 class LinkDAO extends DAO 
 {
-    
+    /**
+     * Returns a comment by using an id.
+     *
+     * @return array A list of all comments.
+     */
     public function find($id)
     {
         $sql = "SELECT *
@@ -57,16 +61,31 @@ class LinkDAO extends DAO
         return $link;
     }
     
+    /**
+    *Delete a link by using an id
+    *
+    */
     public function delete($id)
     {
         $this->getDb()->delete('t_link',array('link_id'=>$id));
     }
     
+    /**
+    *Delete all links from a user by using an id
+    *
+    *@param $id
+    *
+    */
     public function deleteAllByUser($id)
     {
         $this->getDb()->delete('t_link', array('user_id'=>$id));
     }
     
+    /**
+     * Save link in Db
+     *  
+     * @param \WebLinks\Domain\Link
+     */
     public function save(Link $link)
     {
         $linkData = array(

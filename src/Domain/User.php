@@ -5,11 +5,41 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface
 {
+    /**
+     * User id.
+     *
+     * @var integer
+     */
     private $id;
+    
+    /**
+     * User name.
+     *
+     * @var string
+     */
     private $username;
+    
+    /**
+     * User password.
+     *
+     * @var string
+     */
     private $password;
+    
+    /**
+     * User salt.
+     *
+     * @var string
+     */
     private $salt;
+    
+    /**
+     * User role.
+     *
+     * @var string
+     */
     private $role;
+    
     
     public function getId()
     {

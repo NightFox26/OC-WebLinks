@@ -44,6 +44,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
     'security.access_rules' => array(
         array('^/admin', 'ROLE_ADMIN'),
+        array('^/link/submit', 'ROLE_USER'),
     ),
     
 ));
@@ -64,8 +65,6 @@ if (isset($app['debug']) && $app['debug']) {
     ));
 }
 
-
-
 // Register services
 $app['dao.link'] = $app->share(function ($app) {
     $linkDAO = new WebLinks\DAO\LinkDAO($app['db']);
@@ -77,5 +76,25 @@ $app['dao.user'] = $app->share(function ($app) {
     return $userDAO;
 });
 
-//var_dump($app['dao.user']->findAll());
-//$app['dao.user']->deleteUser(2);
+// Register error handler
+$app->error(function (\Exception $e, $code) use ($app) {
+    switch ($code) {
+        case 403:
+            $message = 'Access denied.';
+            break;
+        case 404:
+            $message = 'The requested resource could not be found.';
+            break;
+        default:
+            $message = "Something went wrong.";
+    }
+    return $app['twig']->render('error.html.twig', array('message' => $message));
+});
+
+// Register JSON data decoder for JSON requests
+$app->before(function (Request $request) {
+    if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+        $data = json_decode($request->getContent(), true);
+        $request->request->replace(is_array($data) ? $data : array());
+    }
+});
