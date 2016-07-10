@@ -3,7 +3,6 @@ namespace WebLinks\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use WebLinks\Domain\Link;
 use WebLinks\Domain\User;
 use WebLinks\Form\Type\LinkType;
 use WebLinks\Form\Type\UserType;
